@@ -25,31 +25,31 @@ public class TestFile {
     }
 
     @Test
-    @DisplayName("Скачивание PDF файла: Памятка")
+    @DisplayName("РЎРєР°С‡РёРІР°РЅРёРµ PDF С„Р°Р№Р»Р°: РџР°РјСЏС‚РєР°")
     void firstPdfFileDownloadTest() throws IOException {
         open("https://alfabank.ru/get-money/credit-cards/100-days/");
-        File pdf = $(byLinkText("Памятка о беспроцентном периоде по Кредитной карте")).download();
+        File pdf = $(byLinkText("РџР°РјСЏС‚РєР° Рѕ Р±РµСЃРїСЂРѕС†РµРЅС‚РЅРѕРј РїРµСЂРёРѕРґРµ РїРѕ РљСЂРµРґРёС‚РЅРѕР№ РєР°СЂС‚Рµ")).download();
         PDF parsedPdf = new PDF(pdf);
         Assertions.assertEquals(2, parsedPdf.numberOfPages);
     }
 
 
     @Test
-    @DisplayName("Скачивание PDF файла: Тарифы")
+    @DisplayName("РЎРєР°С‡РёРІР°РЅРёРµ PDF С„Р°Р№Р»Р°: РўР°СЂРёС„С‹")
     void secondPdfFileDownloadTest() throws IOException {
         open("https://alfabank.ru/get-money/credit-cards/100-days/");
-        File pdf = $(byLinkText("Кредитная карта 100 дней без % Тарифы")).download();
+        File pdf = $(byLinkText("РљСЂРµРґРёС‚РЅР°СЏ РєР°СЂС‚Р° 100 РґРЅРµР№ Р±РµР· % РўР°СЂРёС„С‹")).download();
         PDF parsedPdf = new PDF(pdf);
-        Assertions.assertEquals(true, parsedPdf.text.contains("Беспроцентный период"));
+        Assertions.assertEquals(true, parsedPdf.text.contains("Р‘РµСЃРїСЂРѕС†РµРЅС‚РЅС‹Р№ РїРµСЂРёРѕРґ"));
 
     }
 
 
     @Test
-    @DisplayName("Скачивание XLS файла")
+    @DisplayName("РЎРєР°С‡РёРІР°РЅРёРµ XLS С„Р°Р№Р»Р°")
     void xlsFileDownloadTest() throws IOException {
         open("https://ckmt.ru/price-download.html");
-        File file = $(byLinkText("Скачать")).download();
+        File file = $(byLinkText("РЎРєР°С‡Р°С‚СЊ")).download();
         XLS parsedXls = new XLS(file);
         boolean checkPassed = parsedXls.excel.
                 getSheetAt(0).
